@@ -1,17 +1,44 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-icon name="log-out" (click)="signOut()" item-end></ion-icon>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="puppies">
+        puppies
+      </ion-segment-button>
+      <ion-segment-button value="kittens">
+        kittens
+       </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'puppies'">
+      <ion-item *ngFor="let newPup of puppies; let i=index" (click)="puppyClick(i)">
+        <ion-thumbnail item-start>
+          <img src="{{newPup.image}}">
+        </ion-thumbnail>
+        <h2>Name:{{newPup.name}}</h2>
+        <h2>Age:{{newPup.age}}</h2>
+        <h2>Price:{{newPup.price}}</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item *ngFor="let newKit of kittens;let i=index" (click)="kittyClick(i)">
+        <ion-thumbnail item-start>
+          <img src="{{newKit.image}}">
+        </ion-thumbnail>
+        <h2>Name:{{newKit.name}}</h2>
+        <h2>Age:{{newKit.age}}</h2>
+        <h2>Price:{{newKit.price}}</h2>
+      </ion-item>
+    </ion-list>
+    
+  </div>
+  <!-- <button ion-button (click)="submitData()">submit</button> -->
 </ion-content>

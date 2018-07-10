@@ -10,6 +10,27 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import *as firebase from 'firebase'
+import { DetailsPageModule } from '../pages/details/details.module';
+import { DetailsPage } from '../pages/details/details';
+import { SigninPageModule } from '../pages/signin/signin.module';
+import { RegistrationPageModule } from '../pages/registration/registration.module';
+import { SigninPage } from '../pages/signin/signin';
+import { RegistrationPage } from '../pages/registration/registration';
+import { FormsModule }    from '@angular/forms';
+import { BuyPageModule } from '../pages/buy/buy.module';
+import { BuyPage } from '../pages/buy/buy';
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAHHHsyMD02AW6ly9tlnpaQJfjt6lwyc54",
+    authDomain: "holidayhome-5de1b.firebaseapp.com",
+    databaseURL: "https://holidayhome-5de1b.firebaseio.com",
+    projectId: "holidayhome-5de1b",
+    storageBucket: "",
+    messagingSenderId: "418509918805"
+  };
+  firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
@@ -21,6 +42,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    DetailsPageModule,
+    SigninPageModule,
+    FormsModule,
+    BuyPageModule,
+    RegistrationPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -29,7 +55,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DetailsPage,
+    SigninPage,
+    RegistrationPage,
+    BuyPage
   ],
   providers: [
     StatusBar,
